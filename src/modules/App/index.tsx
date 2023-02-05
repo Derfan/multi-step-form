@@ -1,4 +1,4 @@
-import { Layout, Button, Title } from "../../components";
+import { Layout, Button, Title, Description } from "../../components";
 import { ButtonType } from "../../constants";
 import cn from "./App.module.sass";
 
@@ -8,6 +8,9 @@ export const App = () => (
 
     <div className={cn.card}>
       <Title>Personal info</Title>
+      <Description>
+        Please provide your name, email address, and phone number.
+      </Description>
     </div>
 
     <div className={cn.buttons}>
