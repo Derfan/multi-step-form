@@ -2,3 +2,4 @@ export { Layout } from "./Layout";
 export { Button } from "./Button";
 export { Title } from "./Title";
 export { Description } from "./Description";
+export { Card } from "./Card";
