@@ -3,11 +3,11 @@ import { Layout, Button, Stepper } from "../../components";
 import { ThankYou } from "../../steps";
 import { useSteps } from "../../hooks";
 import { ButtonType, content } from "../../constants";
-import cn from "./App.module.sass";
+import cn from "./MultiStepForm.module.sass";
 
 const steps = content.map(({ label }) => label);
 
-export const App = () => {
+export const MultiStepForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { activeStep, goToNextStep, goToPrevStep } = useSteps();
 

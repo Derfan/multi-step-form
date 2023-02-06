@@ -1,1 +1,1 @@
-export { App } from "./App";
+export { MultiStepForm } from "./MultiStepForm";
