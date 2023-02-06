@@ -23,21 +23,19 @@ export const CheckBoxField = ({
   };
 
   return (
-    <label
-      className={cns(cn.root, { [cn.checked]: isChecked }, className)}
-      htmlFor={name}
-    >
+    <label className={cns(cn.root, { [cn.checked]: isChecked }, className)}>
       <div className={cns(cn.box, { [cn.checked]: isChecked })}>
         <CheckIcon />
       </div>
+
       <input
-        id={name}
         type="checkbox"
         name={name}
         className={cn.field}
         onChange={handleChange}
         defaultChecked={defaultChecked}
       />
+
       <div className={cn.label}>{children}</div>
     </label>
   );

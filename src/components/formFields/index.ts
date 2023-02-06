@@ -1,2 +1,2 @@
 export { TextField } from "./TextField";
-export { CheckBoxField } from "./CheckBoxField";
+export { CheckBoxGroupField } from "./CheckBoxGroupField";
