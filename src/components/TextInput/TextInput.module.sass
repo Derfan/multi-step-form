@@ -1,0 +1,39 @@
+.root
+    display: flex
+    flex-direction: column
+
+.label
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+    font-size: 12px
+    line-height: 14px
+
+    margin-bottom: 3px
+
+.labelText
+    font-family: UbuntuRegular
+    color: #022959
+
+.errorText
+    font-family: UbuntuBold
+    color: #EE374A
+
+.field
+    font-family: UbuntuMedium
+    font-size: 15px
+    line-height: 17px
+    color: #022959
+
+    background-color: #FFFFFF
+    border: 1px solid #D6D9E6
+    border-radius: 4px
+    padding: 12px 16px
+    outline: none
+
+    &:focus
+        border-color: #483EFF
+
+    &.error
+        border-color: #EE374A

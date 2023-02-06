@@ -6,6 +6,7 @@ import {
   Description,
   Card,
   Stepper,
+  TextInput,
 } from "../../components";
 import { ThankYou } from "../../steps";
 import { useSteps } from "../../hooks";
@@ -37,18 +38,27 @@ export const App = () => {
           <Card>
             <Title>{title}</Title>
             <Description>{description}</Description>
+            <TextInput
+              name="name"
+              label="Name"
+              placeholder="e.g. Stephen King"
+            />
+            <TextInput
+              name="email"
+              label="Email Address"
+              placeholder="e.g. stephenking@lorem.com"
+            />
+            <TextInput
+              name="phone"
+              label="Phone Number"
+              placeholder="e.g. +1 234 567 890"
+            />
           </Card>
         )}
       </div>
 
       {isSubmitted ? null : (
         <div className={cn.buttons}>
-          {activeStep !== 0 ? (
-            <Button type={ButtonType.SECONDARY} onClick={goToPrevStep}>
-              Go Back
-            </Button>
-          ) : null}
-
           {activeStep === steps.length - 1 ? (
             <Button type={ButtonType.SUBMIT} onClick={handleConfirmForm}>
               Confirm
@@ -58,6 +68,12 @@ export const App = () => {
               Next Step
             </Button>
           )}
+
+          {activeStep !== 0 ? (
+            <Button type={ButtonType.SECONDARY} onClick={goToPrevStep}>
+              Go Back
+            </Button>
+          ) : null}
         </div>
       )}
     </Layout>
