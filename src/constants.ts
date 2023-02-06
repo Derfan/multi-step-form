@@ -1,3 +1,5 @@
+import { PersonalInfo } from "./steps";
+
 export enum ButtonType {
   PRIMARY = "primary",
   SECONDARY = "secondary",
@@ -7,8 +9,7 @@ export enum ButtonType {
 export const content = [
   {
     label: "Your Info",
-    title: "Personal info",
-    description: "Please provide your name, email address, and phone number.",
+    Component: PersonalInfo,
   },
   {
     label: "Select Plan",
