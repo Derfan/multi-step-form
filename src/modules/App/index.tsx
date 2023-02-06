@@ -1,10 +1,22 @@
-import { Layout, Button, Title, Description, Card } from "../../components";
+import {
+  Layout,
+  Button,
+  Title,
+  Description,
+  Card,
+  Stepper,
+} from "../../components";
 import { ButtonType } from "../../constants";
 import cn from "./App.module.sass";
 
 export const App = () => (
   <Layout>
-    <div className={cn.steps}>steps</div>
+    <div className={cn.steps}>
+      <Stepper
+        steps={["Your Info", "Select Plan", "Add-Ons", "Summary"]}
+        activeStep={0}
+      />
+    </div>
 
     <div className={cn.card}>
       <Card>
