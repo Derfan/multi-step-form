@@ -1,4 +1,4 @@
-import { Card, Title, Description, TextInput } from "../../components";
+import { Card, Title, Description, TextField } from "../../components";
 import cn from "./PersonalInfo.module.sass";
 
 export const PersonalInfo = () => (
@@ -10,13 +10,13 @@ export const PersonalInfo = () => (
     </Description>
 
     <div className={cn.fields}>
-      <TextInput name="name" label="Name" placeholder="e.g. Stephen King" />
-      <TextInput
+      <TextField name="name" label="Name" placeholder="e.g. Stephen King" />
+      <TextField
         name="email"
         label="Email Address"
         placeholder="e.g. stephenking@lorem.com"
       />
-      <TextInput
+      <TextField
         name="phone"
         label="Phone Number"
         placeholder="e.g. +1 234 567 890"

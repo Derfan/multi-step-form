@@ -1,7 +1,7 @@
 import cns from "classnames";
-import cn from "./TextInput.module.sass";
+import cn from "./TextField.module.sass";
 
-interface TextInputProps {
+interface TextFieldProps {
   name: string;
   label: string;
   placeholder: string;
@@ -9,13 +9,13 @@ interface TextInputProps {
   className?: string;
 }
 
-export const TextInput = ({
+export const TextField = ({
   name,
   label,
   placeholder,
   error = "",
   className = "",
-}: TextInputProps) => (
+}: TextFieldProps) => (
   <div className={cns(cn.root, className)}>
     <div className={cn.label}>
       <label htmlFor={name} className={cn.labelText}>
