@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Layout, Button, Stepper } from "../../components";
-import { PersonalInfo, ThankYou } from "../../steps";
+import { ThankYou } from "../../steps";
 import { useSteps } from "../../hooks";
 import { ButtonType, content } from "../../constants";
 import cn from "./App.module.sass";
@@ -10,6 +10,8 @@ const steps = content.map(({ label }) => label);
 export const App = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { activeStep, goToNextStep, goToPrevStep } = useSteps();
+
+  const { Component: StepComponent } = content[activeStep];
 
   const handleConfirmForm = () => {
     setIsSubmitted(true);
@@ -22,7 +24,7 @@ export const App = () => {
       </div>
 
       <div className={cn.card}>
-        {isSubmitted ? <ThankYou /> : <PersonalInfo />}
+        {isSubmitted ? <ThankYou /> : <StepComponent />}
       </div>
 
       {isSubmitted ? null : (

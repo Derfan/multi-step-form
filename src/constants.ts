@@ -1,4 +1,4 @@
-import { PersonalInfo } from "./steps";
+import { PersonalInfo, SelectPlan, PickAddons, Summary } from "./steps";
 
 export enum ButtonType {
   PRIMARY = "primary",
@@ -13,17 +13,14 @@ export const content = [
   },
   {
     label: "Select Plan",
-    title: "Select your plan",
-    description: "You have the option of monthly or yearly billing.",
+    Component: SelectPlan,
   },
   {
     label: "Add-Ons",
-    title: "Pick add-ons",
-    description: "Add-ons help enhance your gaming experience.",
+    Component: PickAddons,
   },
   {
     label: "Summary",
-    title: "Finishing up",
-    description: "Double-check everything looks OK before confirming.",
+    Component: Summary,
   },
 ];

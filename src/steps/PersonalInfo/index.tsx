@@ -4,6 +4,7 @@ import cn from "./PersonalInfo.module.sass";
 export const PersonalInfo = () => (
   <Card>
     <Title>Personal info</Title>
+
     <Description className={cn.description}>
       Please provide your name, email address, and phone number.
     </Description>
