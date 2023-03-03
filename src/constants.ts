@@ -24,3 +24,11 @@ export const content = [
     Component: Summary,
   },
 ];
+
+export enum FieldName {
+  Name = "name",
+  Email = "email",
+  Phone = "phone",
+  Plan = "plan",
+  Addons = "addons",
+}

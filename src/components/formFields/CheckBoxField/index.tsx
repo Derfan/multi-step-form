@@ -5,6 +5,7 @@ import cn from "./CheckBoxField.module.sass";
 
 interface CheckBoxFieldProps {
   name: string;
+  value: string;
   children: ReactNode;
   defaultChecked?: boolean;
   className?: string;
@@ -12,6 +13,7 @@ interface CheckBoxFieldProps {
 
 export const CheckBoxField = ({
   name,
+  value,
   children,
   defaultChecked = false,
   className = "",
@@ -31,6 +33,7 @@ export const CheckBoxField = ({
       <input
         type="checkbox"
         name={name}
+        value={value}
         className={cn.field}
         onChange={handleChange}
         defaultChecked={defaultChecked}

@@ -11,7 +11,7 @@ interface ButtonProps {
 
 export const Button = ({ type, children, onClick }: ButtonProps) => (
   <button
-    type={type === ButtonType.SUBMIT ? "submit" : "button"}
+    type={type === ButtonType.SECONDARY ? "button" : "submit"}
     className={cns(cn.root, cn[type])}
     onClick={onClick}
   >

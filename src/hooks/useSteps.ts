@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-export const useSteps = () => {
-  const [activeStep, setActiveStep] = useState(0);
+export const useSteps = (defaultStep = 0) => {
+  const [activeStep, setActiveStep] = useState(defaultStep);
 
   const goToNextStep = () => {
     setActiveStep((prevStep) => prevStep + 1);
