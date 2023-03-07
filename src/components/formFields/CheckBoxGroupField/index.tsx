@@ -3,28 +3,34 @@ import cns from "classnames";
 import { CheckBoxField } from "../CheckBoxField";
 import cn from "./CheckBoxGroupField.module.sass";
 
-interface CheckBoxGroupFieldProps<T> {
+type Option = {
+  value: string;
+  label: string;
+  defaultChecked?: boolean;
+};
+
+interface CheckBoxGroupFieldProps {
   name: string;
-  fields: T[];
+  options: Option[];
   className?: string;
-  children: (field: T) => ReactNode;
+  children: (option: Option) => ReactNode;
 }
 
 export const CheckBoxGroupField = ({
   name,
-  fields,
+  options,
   className = "",
   children,
-}: CheckBoxGroupFieldProps<{ [key: string]: any }>) => (
+}: CheckBoxGroupFieldProps) => (
   <div className={cns(cn.root, className)}>
-    {fields.map((item) => (
+    {options.map((option) => (
       <CheckBoxField
-        key={item.value}
+        key={option.value}
         name={name}
-        value={item.value}
-        defaultChecked={item.defaultChecked}
+        value={option.value}
+        defaultChecked={option.defaultChecked}
       >
-        {children(item)}
+        {children(option)}
       </CheckBoxField>
     ))}
   </div>

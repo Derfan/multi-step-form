@@ -1,30 +1,30 @@
 import { Card, Title, Description, CheckBoxGroupField } from "../../components";
-import { FieldName } from "../../types";
+import { FieldName, Period } from "../../types";
 import { AddonLabel } from "./AddonLabel";
 import cn from "./PickAddons.module.sass";
 
-const fields = [
-  {
-    value: "onlineService",
-    title: "Online service",
+const content = {
+  onlineService: {
     description: "Access to multiplayer games",
     price: 1,
-    period: "mo",
+    period: Period.Monthly,
   },
-  {
-    value: "largerStorage",
-    title: "Larger storage",
+  largerStorage: {
     description: "Extra 1TB of cloud save",
     price: 2,
-    period: "mo",
+    period: Period.Monthly,
   },
-  {
-    value: "customizableProfile",
-    title: "Customizable profile",
+  customizableProfile: {
     description: "Custom theme on your profile",
     price: 2,
-    period: "mo",
+    period: Period.Monthly,
   },
+};
+
+const options = [
+  { value: "onlineService", label: "Online service" },
+  { value: "largerStorage", label: "Larger storage" },
+  { value: "customizableProfile", label: "Customizable profile" },
 ];
 
 export const PickAddons = () => (
@@ -36,13 +36,11 @@ export const PickAddons = () => (
     </Description>
 
     <div className={cn.fields}>
-      <CheckBoxGroupField name={FieldName.Addons} fields={fields}>
-        {({ title, description, price, period }) => (
+      <CheckBoxGroupField name={FieldName.Addons} options={options}>
+        {({ value, label }) => (
           <AddonLabel
-            title={title}
-            description={description}
-            price={price}
-            period={period}
+            title={label}
+            {...content[value as keyof typeof content]}
           />
         )}
       </CheckBoxGroupField>

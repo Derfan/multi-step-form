@@ -1,10 +1,12 @@
+import { Period } from "../../../types";
+
 import cn from "./AddonLabel.module.sass";
 
 interface AddonLabelProps {
   title: string;
   description: string;
   price: number;
-  period: "mo" | "yr";
+  period: Period;
 }
 
 export const AddonLabel = ({

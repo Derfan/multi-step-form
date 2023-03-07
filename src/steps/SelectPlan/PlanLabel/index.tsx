@@ -1,11 +1,13 @@
 import { FunctionComponent } from "react";
+
+import { Period } from "../../../types";
 import cn from "./PlanLabel.module.sass";
 
 interface PlanLabelProps {
   title: string;
   icon: FunctionComponent;
   price: number;
-  period: "mo" | "yr";
+  period: Period;
 }
 
 export const PlanLabel = ({
