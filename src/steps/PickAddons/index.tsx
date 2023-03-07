@@ -1,5 +1,5 @@
 import { Card, Title, Description, CheckBoxGroupField } from "../../components";
-import { FieldName } from "../../constants";
+import { FieldName } from "../../types";
 import { AddonLabel } from "./AddonLabel";
 import cn from "./PickAddons.module.sass";
 

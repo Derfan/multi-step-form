@@ -1,12 +1,6 @@
 import { PersonalInfo, SelectPlan, PickAddons, Summary } from "./steps";
 
-export enum ButtonType {
-  PRIMARY = "primary",
-  SECONDARY = "secondary",
-  SUBMIT = "submit",
-}
-
-export const content = [
+export const stepsContent = [
   {
     label: "Your Info",
     Component: PersonalInfo,
@@ -24,11 +18,3 @@ export const content = [
     Component: Summary,
   },
 ];
-
-export enum FieldName {
-  Name = "name",
-  Email = "email",
-  Phone = "phone",
-  Plan = "plan",
-  Addons = "addons",
-}

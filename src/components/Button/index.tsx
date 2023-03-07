@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import cns from "classnames";
-import { ButtonType } from "../../constants";
+import { ButtonType } from "../../types";
 import cn from "./Button.module.sass";
 
 interface ButtonProps {

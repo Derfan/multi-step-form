@@ -1,5 +1,5 @@
 import { Card, Title, Description, TextField } from "../../components";
-import { FieldName } from "../../constants";
+import { FieldName } from "../../types";
 import cn from "./PersonalInfo.module.sass";
 
 export const PersonalInfo = () => (

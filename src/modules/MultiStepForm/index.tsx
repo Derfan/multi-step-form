@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Layout, Button, Stepper } from "../../components";
 import { ThankYou } from "../../steps";
-import { useSteps, useForm } from "../../hooks";
-import { ButtonType, FieldName, content } from "../../constants";
+import { useSteps, useForm, useStoredData } from "../../hooks";
+import { stepsContent } from "../../constants";
+import { FieldName, ButtonType } from "../../types";
 import cn from "./MultiStepForm.module.sass";
 
-const steps = content.map(({ label }) => label);
+const steps = stepsContent.map(({ label }) => label);
 
 type FormValues = {
   [FieldName.Name]: string;
@@ -25,17 +26,19 @@ const initialValues = {
 
 export const MultiStepForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const { updateStoredData } = useStoredData<FormValues>("ms-form-content");
   const { activeStep, goToNextStep, goToPrevStep } = useSteps();
   const { handleSubmit } = useForm<FormValues>({
     initialValues,
   });
 
-  const { Component: StepComponent } = content[activeStep];
+  const { Component: StepComponent } = stepsContent[activeStep];
 
   const onSubmit = (data: FormValues) => {
     if (activeStep === steps.length - 1) {
       setIsSubmitted(true);
     } else {
+      updateStoredData(data);
       goToNextStep();
     }
   };
