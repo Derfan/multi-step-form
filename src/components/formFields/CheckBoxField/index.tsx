@@ -35,8 +35,8 @@ export const CheckBoxField = ({
         name={name}
         value={value}
         className={cn.field}
-        onChange={handleChange}
         defaultChecked={defaultChecked}
+        onChange={handleChange}
       />
 
       <div className={cn.label}>{children}</div>

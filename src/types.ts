@@ -11,3 +11,8 @@ export enum ButtonType {
   SECONDARY = "secondary",
   SUBMIT = "submit",
 }
+
+export enum Period {
+  Monthly = "mo",
+  Yearly = "yr",
+}

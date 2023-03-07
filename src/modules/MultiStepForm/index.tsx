@@ -27,7 +27,7 @@ const initialValues = {
 export const MultiStepForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { updateStoredData } = useStoredData<FormValues>("ms-form-content");
-  const { activeStep, goToNextStep, goToPrevStep } = useSteps();
+  const { activeStep, goToNextStep, goToPrevStep } = useSteps(0);
   const { handleSubmit } = useForm<FormValues>({
     initialValues,
   });
