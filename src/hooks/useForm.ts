@@ -7,7 +7,6 @@ interface IFormSettings<T> {
 export const useForm = <T extends { [name: string]: string | string[] }>({
   initialValues,
 }: IFormSettings<T>) => {
-  const fields = Object.keys(initialValues);
   const [formValues, setFormValues] = useState(initialValues);
 
   const handleSubmit =
@@ -16,8 +15,8 @@ export const useForm = <T extends { [name: string]: string | string[] }>({
 
       const formData = new FormData(event.target as HTMLFormElement);
 
-      const data = fields.reduce((acc, name) => {
-        const isArray = Array.isArray(initialValues?.[name]);
+      const data = Object.keys(initialValues).reduce((acc, name) => {
+        const isArray = Array.isArray(initialValues[name]);
         const value = isArray ? formData.getAll(name) : formData.get(name);
 
         if (!value || (isArray && (value as string[])?.length === 0)) {
@@ -38,6 +37,6 @@ export const useForm = <T extends { [name: string]: string | string[] }>({
 
   return {
     formValues,
-    handleSubmit,
+    methods: { handleSubmit },
   };
 };

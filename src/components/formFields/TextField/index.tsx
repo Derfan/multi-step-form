@@ -7,6 +7,7 @@ interface TextFieldProps {
   placeholder: string;
   error?: string;
   className?: string;
+  defaultValue?: string;
 }
 
 export const TextField = ({
@@ -15,6 +16,7 @@ export const TextField = ({
   placeholder,
   error = "",
   className = "",
+  defaultValue = "",
 }: TextFieldProps) => (
   <div className={cns(cn.root, className)}>
     <div className={cn.label}>
@@ -29,6 +31,7 @@ export const TextField = ({
       name={name}
       placeholder={placeholder}
       className={cns(cn.field, { [cn.error]: error })}
+      defaultValue={defaultValue}
     />
   </div>
 );

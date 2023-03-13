@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Layout, Button, Stepper } from "../../components";
+import { Layout, Button, Stepper, FormProvider } from "../../components";
 import { ThankYou } from "../../steps";
 import { useSteps, useForm, useStoredData } from "../../hooks";
 import { stepsContent } from "../../constants";
@@ -26,10 +26,14 @@ const initialValues = {
 
 export const MultiStepForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const { updateStoredData } = useStoredData<FormValues>("ms-form-content");
+  const { updateStoredData, getStoredData } =
+    useStoredData<FormValues>("ms-form-content");
   const { activeStep, goToNextStep, goToPrevStep } = useSteps(0);
-  const { handleSubmit } = useForm<FormValues>({
-    initialValues,
+  const form = useForm<FormValues>({
+    initialValues: {
+      ...initialValues,
+      ...getStoredData(),
+    },
   });
 
   const { Component: StepComponent } = stepsContent[activeStep];
@@ -44,32 +48,34 @@ export const MultiStepForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <Layout>
-        <div className={cn.steps}>
-          <Stepper steps={steps} activeStep={activeStep} />
-        </div>
-
-        <div className={cn.card}>
-          {isSubmitted ? <ThankYou /> : <StepComponent />}
-        </div>
-
-        {isSubmitted ? null : (
-          <div className={cn.buttons}>
-            {activeStep === steps.length - 1 ? (
-              <Button type={ButtonType.SUBMIT}>Confirm</Button>
-            ) : (
-              <Button type={ButtonType.PRIMARY}>Next Step</Button>
-            )}
-
-            {activeStep !== 0 ? (
-              <Button type={ButtonType.SECONDARY} onClick={goToPrevStep}>
-                Go Back
-              </Button>
-            ) : null}
+    <FormProvider {...form}>
+      <form onSubmit={form.methods.handleSubmit(onSubmit)}>
+        <Layout>
+          <div className={cn.steps}>
+            <Stepper steps={steps} activeStep={activeStep} />
           </div>
-        )}
-      </Layout>
-    </form>
+
+          <div className={cn.card}>
+            {isSubmitted ? <ThankYou /> : <StepComponent />}
+          </div>
+
+          {isSubmitted ? null : (
+            <div className={cn.buttons}>
+              {activeStep === steps.length - 1 ? (
+                <Button type={ButtonType.SUBMIT}>Confirm</Button>
+              ) : (
+                <Button type={ButtonType.PRIMARY}>Next Step</Button>
+              )}
+
+              {activeStep !== 0 ? (
+                <Button type={ButtonType.SECONDARY} onClick={goToPrevStep}>
+                  Go Back
+                </Button>
+              ) : null}
+            </div>
+          )}
+        </Layout>
+      </form>
+    </FormProvider>
   );
 };
