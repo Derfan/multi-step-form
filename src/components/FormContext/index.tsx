@@ -5,12 +5,14 @@ interface ContextValue {
     name: string;
     email: string;
     phone: string;
+    plan: string;
+    addons: string[];
   };
   methods: {};
 }
 
 const FormCtx = createContext<ContextValue>({
-  formValues: { name: "", email: "", phone: "" },
+  formValues: { name: "", email: "", phone: "", plan: "", addons: [] },
   methods: {},
 });
 

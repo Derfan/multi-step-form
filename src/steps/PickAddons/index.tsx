@@ -1,4 +1,10 @@
-import { Card, Title, Description, CheckBoxGroupField } from "../../components";
+import {
+  Card,
+  Title,
+  Description,
+  CheckBoxGroupField,
+  useFormCtx,
+} from "../../components";
 import { FieldName, Period } from "../../types";
 import { AddonLabel } from "./AddonLabel";
 import cn from "./PickAddons.module.sass";
@@ -27,23 +33,33 @@ const options = [
   { value: "customizableProfile", label: "Customizable profile" },
 ];
 
-export const PickAddons = () => (
-  <Card>
-    <Title>Pick add-ons</Title>
+export const PickAddons = () => {
+  const {
+    formValues: { addons },
+  } = useFormCtx();
 
-    <Description className={cn.description}>
-      Add-ons help enhance your gaming experience.
-    </Description>
+  return (
+    <Card>
+      <Title>Pick add-ons</Title>
 
-    <div className={cn.fields}>
-      <CheckBoxGroupField name={FieldName.Addons} options={options}>
-        {({ value, label }) => (
-          <AddonLabel
-            title={label}
-            {...content[value as keyof typeof content]}
-          />
-        )}
-      </CheckBoxGroupField>
-    </div>
-  </Card>
-);
+      <Description className={cn.description}>
+        Add-ons help enhance your gaming experience.
+      </Description>
+
+      <div className={cn.fields}>
+        <CheckBoxGroupField
+          name={FieldName.Addons}
+          options={options}
+          defaultChecked={addons}
+        >
+          {({ value, label }) => (
+            <AddonLabel
+              title={label}
+              {...content[value as keyof typeof content]}
+            />
+          )}
+        </CheckBoxGroupField>
+      </div>
+    </Card>
+  );
+};

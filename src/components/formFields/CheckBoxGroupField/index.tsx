@@ -1,18 +1,15 @@
 import { ReactNode } from "react";
 import cns from "classnames";
+
+import { Option } from "../../../types";
 import { CheckBoxField } from "../CheckBoxField";
 import cn from "./CheckBoxGroupField.module.sass";
-
-type Option = {
-  value: string;
-  label: string;
-  defaultChecked?: boolean;
-};
 
 interface CheckBoxGroupFieldProps {
   name: string;
   options: Option[];
   className?: string;
+  defaultChecked?: string[];
   children: (option: Option) => ReactNode;
 }
 
@@ -20,6 +17,7 @@ export const CheckBoxGroupField = ({
   name,
   options,
   className = "",
+  defaultChecked = [],
   children,
 }: CheckBoxGroupFieldProps) => (
   <div className={cns(cn.root, className)}>
@@ -28,7 +26,7 @@ export const CheckBoxGroupField = ({
         key={option.value}
         name={name}
         value={option.value}
-        defaultChecked={option.defaultChecked}
+        defaultChecked={defaultChecked.includes(option.value)}
       >
         {children(option)}
       </CheckBoxField>

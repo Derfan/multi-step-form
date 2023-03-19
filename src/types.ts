@@ -1,3 +1,8 @@
+export type Option = {
+  value: string;
+  label: string;
+};
+
 export enum FieldName {
   Name = "name",
   Email = "email",

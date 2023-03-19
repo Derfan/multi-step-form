@@ -1,4 +1,10 @@
-import { Card, Title, Description, RadioGroupField } from "../../components";
+import {
+  Card,
+  Title,
+  Description,
+  RadioGroupField,
+  useFormCtx,
+} from "../../components";
 import { Period, FieldName } from "../../types";
 
 import { ReactComponent as IconArcade } from "../../assets/images/icon-arcade.svg";
@@ -20,27 +26,33 @@ const options = [
   { value: "pro", label: "Pro" },
 ];
 
-export const SelectPlan = () => (
-  <Card>
-    <Title>Select your plan</Title>
+export const SelectPlan = () => {
+  const {
+    formValues: { plan },
+  } = useFormCtx();
 
-    <Description className={cn.description}>
-      You have the option of monthly or yearly billing.
-    </Description>
+  return (
+    <Card>
+      <Title>Select your plan</Title>
 
-    <div className={cn.fields}>
-      <RadioGroupField
-        name={FieldName.Plan}
-        options={options}
-        defaultChecked={options[0].value}
-      >
-        {({ value, label }) => (
-          <PlanLabel
-            title={label}
-            {...content[value as keyof typeof content]}
-          />
-        )}
-      </RadioGroupField>
-    </div>
-  </Card>
-);
+      <Description className={cn.description}>
+        You have the option of monthly or yearly billing.
+      </Description>
+
+      <div className={cn.fields}>
+        <RadioGroupField
+          name={FieldName.Plan}
+          options={options}
+          defaultChecked={plan || options[0].value}
+        >
+          {({ value, label }) => (
+            <PlanLabel
+              title={label}
+              {...content[value as keyof typeof content]}
+            />
+          )}
+        </RadioGroupField>
+      </div>
+    </Card>
+  );
+};
