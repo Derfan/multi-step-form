@@ -9,6 +9,11 @@ export const useForm = <T extends { [name: string]: string | string[] }>({
 }: IFormSettings<T>) => {
   const [formValues, setFormValues] = useState(initialValues);
 
+  const registerField = <Key extends keyof T>(name: Key) => ({
+    name,
+    defaultValue: initialValues[name],
+  });
+
   const handleSubmit =
     (onSubmit: (data: T) => void) => (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
@@ -37,6 +42,6 @@ export const useForm = <T extends { [name: string]: string | string[] }>({
 
   return {
     formValues,
-    methods: { handleSubmit },
+    methods: { registerField, handleSubmit },
   };
 };

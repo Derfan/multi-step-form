@@ -35,6 +35,7 @@ export const MultiStepForm = () => {
       ...getStoredData(),
     },
   });
+  const { methods } = form;
 
   const { Component: StepComponent } = stepsContent[activeStep];
 
@@ -49,7 +50,7 @@ export const MultiStepForm = () => {
 
   return (
     <FormProvider {...form}>
-      <form onSubmit={form.methods.handleSubmit(onSubmit)}>
+      <form onSubmit={methods.handleSubmit(onSubmit)}>
         <Layout>
           <div className={cn.steps}>
             <Stepper steps={steps} activeStep={activeStep} />

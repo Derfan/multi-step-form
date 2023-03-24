@@ -9,7 +9,7 @@ interface CheckBoxGroupFieldProps {
   name: string;
   options: Option[];
   className?: string;
-  defaultChecked?: string[];
+  defaultValue?: string[];
   children: (option: Option) => ReactNode;
 }
 
@@ -17,7 +17,7 @@ export const CheckBoxGroupField = ({
   name,
   options,
   className = "",
-  defaultChecked = [],
+  defaultValue = [],
   children,
 }: CheckBoxGroupFieldProps) => (
   <div className={cns(cn.root, className)}>
@@ -26,7 +26,7 @@ export const CheckBoxGroupField = ({
         key={option.value}
         name={name}
         value={option.value}
-        defaultChecked={defaultChecked.includes(option.value)}
+        defaultChecked={defaultValue.includes(option.value)}
       >
         {children(option)}
       </CheckBoxField>

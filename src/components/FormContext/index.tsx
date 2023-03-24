@@ -1,19 +1,39 @@
 import { createContext, ReactNode, useContext } from "react";
+import { FieldName } from "../../types";
+
+type FormValues = {
+  [FieldName.Name]: string;
+  [FieldName.Email]: string;
+  [FieldName.Phone]: string;
+  [FieldName.Plan]: string;
+  [FieldName.Addons]: string[];
+};
+
+const initialValues = {
+  [FieldName.Name]: "",
+  [FieldName.Email]: "",
+  [FieldName.Phone]: "",
+  [FieldName.Plan]: "",
+  [FieldName.Addons]: [""],
+};
 
 interface ContextValue {
-  formValues: {
-    name: string;
-    email: string;
-    phone: string;
-    plan: string;
-    addons: string[];
+  formValues: typeof initialValues;
+  methods: {
+    registerField: <FormValuesKey extends keyof FormValues>(
+      fieldName: FormValuesKey
+    ) => {
+      name: FormValuesKey;
+      defaultValue: FormValues[FormValuesKey];
+    };
   };
-  methods: {};
 }
 
 const FormCtx = createContext<ContextValue>({
-  formValues: { name: "", email: "", phone: "", plan: "", addons: [] },
-  methods: {},
+  formValues: initialValues,
+  methods: {
+    registerField: (name) => ({ name, defaultValue: initialValues[name] }),
+  },
 });
 
 export const useFormCtx = () => useContext(FormCtx);

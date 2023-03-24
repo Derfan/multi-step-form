@@ -10,7 +10,7 @@ interface RadioGroupFieldProps {
   name: string;
   options: Option[];
   className?: string;
-  defaultChecked?: Option["value"];
+  defaultValue?: Option["value"];
   children: (option: Option) => ReactNode;
 }
 
@@ -18,10 +18,10 @@ export const RadioGroupField = ({
   name,
   options,
   className = "",
-  defaultChecked = "",
+  defaultValue = "",
   children,
 }: RadioGroupFieldProps) => {
-  const [value, setValue] = useState(defaultChecked);
+  const [value, setValue] = useState(defaultValue);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);

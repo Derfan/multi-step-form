@@ -34,9 +34,7 @@ const options = [
 ];
 
 export const PickAddons = () => {
-  const {
-    formValues: { addons },
-  } = useFormCtx();
+  const { methods } = useFormCtx();
 
   return (
     <Card>
@@ -48,9 +46,8 @@ export const PickAddons = () => {
 
       <div className={cn.fields}>
         <CheckBoxGroupField
-          name={FieldName.Addons}
+          {...methods.registerField(FieldName.Addons)}
           options={options}
-          defaultChecked={addons}
         >
           {({ value, label }) => (
             <AddonLabel

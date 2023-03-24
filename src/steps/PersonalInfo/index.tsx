@@ -9,7 +9,7 @@ import { FieldName } from "../../types";
 import cn from "./PersonalInfo.module.sass";
 
 export const PersonalInfo = () => {
-  const { formValues } = useFormCtx();
+  const { methods } = useFormCtx();
 
   return (
     <Card>
@@ -21,22 +21,20 @@ export const PersonalInfo = () => {
 
       <div className={cn.fields}>
         <TextField
-          name={FieldName.Name}
+          {...methods.registerField(FieldName.Name)}
           label="Name"
           placeholder="e.g. Stephen King"
-          defaultValue={formValues[FieldName.Name]}
         />
         <TextField
-          name={FieldName.Email}
+          {...methods.registerField(FieldName.Email)}
           label="Email Address"
           placeholder="e.g. stephenking@lorem.com"
-          defaultValue={formValues[FieldName.Email]}
         />
         <TextField
+          {...methods.registerField(FieldName.Phone)}
           name={FieldName.Phone}
           label="Phone Number"
           placeholder="e.g. +1 234 567 890"
-          defaultValue={formValues[FieldName.Phone]}
         />
       </div>
     </Card>

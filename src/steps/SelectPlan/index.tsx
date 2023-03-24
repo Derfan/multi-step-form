@@ -27,9 +27,7 @@ const options = [
 ];
 
 export const SelectPlan = () => {
-  const {
-    formValues: { plan },
-  } = useFormCtx();
+  const { methods } = useFormCtx();
 
   return (
     <Card>
@@ -41,9 +39,8 @@ export const SelectPlan = () => {
 
       <div className={cn.fields}>
         <RadioGroupField
-          name={FieldName.Plan}
+          {...methods.registerField(FieldName.Plan)}
           options={options}
-          defaultChecked={plan || options[0].value}
         >
           {({ value, label }) => (
             <PlanLabel
