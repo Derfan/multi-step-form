@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Layout, Button, Stepper, FormProvider } from "../../components";
+import { Layout, Button, Stepper } from "../../components";
+import { FormProvider } from "../../contexts";
 import { ThankYou } from "../../steps";
 import { useSteps, useForm, useStoredData } from "../../hooks";
 import { stepsContent } from "../../constants";

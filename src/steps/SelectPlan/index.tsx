@@ -1,10 +1,5 @@
-import {
-  Card,
-  Title,
-  Description,
-  RadioGroupField,
-  useFormCtx,
-} from "../../components";
+import { Card, Title, Description, RadioGroupField } from "../../components";
+import { useFormCtx } from "../../contexts";
 import { Period, FieldName } from "../../types";
 
 import { ReactComponent as IconArcade } from "../../assets/images/icon-arcade.svg";

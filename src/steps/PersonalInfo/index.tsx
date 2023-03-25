@@ -1,10 +1,5 @@
-import {
-  Card,
-  Title,
-  Description,
-  TextField,
-  useFormCtx,
-} from "../../components";
+import { Card, Title, Description, TextField } from "../../components";
+import { useFormCtx } from "../../contexts";
 import { FieldName } from "../../types";
 import cn from "./PersonalInfo.module.sass";
 

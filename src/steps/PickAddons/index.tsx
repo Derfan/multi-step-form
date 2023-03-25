@@ -1,10 +1,5 @@
-import {
-  Card,
-  Title,
-  Description,
-  CheckBoxGroupField,
-  useFormCtx,
-} from "../../components";
+import { Card, Title, Description, CheckBoxGroupField } from "../../components";
+import { useFormCtx } from "../../contexts";
 import { FieldName, Period } from "../../types";
 import { AddonLabel } from "./AddonLabel";
 import cn from "./PickAddons.module.sass";
