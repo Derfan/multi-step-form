@@ -1,11 +1,12 @@
 import { createContext, ReactNode, useContext } from "react";
-import { FieldName } from "../../types";
+import { FieldName, Period } from "../../types";
 
 type FormValues = {
   [FieldName.Name]: string;
   [FieldName.Email]: string;
   [FieldName.Phone]: string;
   [FieldName.Plan]: string;
+  [FieldName.Period]: Period;
   [FieldName.Addons]: string[];
 };
 
@@ -14,11 +15,12 @@ const initialValues = {
   [FieldName.Email]: "",
   [FieldName.Phone]: "",
   [FieldName.Plan]: "",
-  [FieldName.Addons]: [""],
+  [FieldName.Period]: Period.Monthly,
+  [FieldName.Addons]: [],
 };
 
 interface ContextValue {
-  formValues: typeof initialValues;
+  formValues: FormValues;
   methods: {
     registerField: <FormValuesKey extends keyof FormValues>(
       fieldName: FormValuesKey

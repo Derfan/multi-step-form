@@ -19,19 +19,17 @@ export const RadioField = ({
   checked,
   className = "",
   onChange,
-}: RadioFieldProps) => {
-  return (
-    <label className={cns(cn.root, { [cn.checked]: checked }, className)}>
-      <input
-        type="radio"
-        name={name}
-        value={value}
-        className={cn.field}
-        checked={checked}
-        onChange={onChange}
-      />
+}: RadioFieldProps) => (
+  <label className={cns(cn.root, { [cn.checked]: checked }, className)}>
+    <input
+      type="radio"
+      name={name}
+      value={value}
+      className={cn.field}
+      checked={checked}
+      onChange={onChange}
+    />
 
-      <div className={cn.label}>{children}</div>
-    </label>
-  );
-};
+    <div className={cn.label}>{children}</div>
+  </label>
+);

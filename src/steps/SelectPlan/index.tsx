@@ -1,4 +1,11 @@
-import { Card, Title, Description, RadioGroupField } from "../../components";
+import { useState } from "react";
+import {
+  Card,
+  Title,
+  Description,
+  RadioGroupField,
+  SwitchField,
+} from "../../components";
 import { useFormCtx } from "../../contexts";
 import { Period, FieldName } from "../../types";
 
@@ -10,9 +17,15 @@ import { PlanLabel } from "./PlanLabel";
 import cn from "./SelectPlan.module.sass";
 
 const content = {
-  arcade: { icon: IconArcade, price: 9, period: Period.Monthly },
-  advanced: { icon: IconAdvanced, price: 12, period: Period.Monthly },
-  pro: { icon: IconPro, price: 15, period: Period.Monthly },
+  arcade: {
+    icon: IconArcade,
+    price: { [Period.Monthly]: 9, [Period.Yearly]: 90 },
+  },
+  advanced: {
+    icon: IconAdvanced,
+    price: { [Period.Monthly]: 12, [Period.Yearly]: 120 },
+  },
+  pro: { icon: IconPro, price: { [Period.Monthly]: 15, [Period.Yearly]: 150 } },
 };
 
 const options = [
@@ -22,12 +35,18 @@ const options = [
 ];
 
 export const SelectPlan = () => {
-  const { methods } = useFormCtx();
+  const { methods, formValues } = useFormCtx();
+  const [period, setPeriod] = useState(formValues.period || Period.Monthly);
+
+  function handleChangePeriod() {
+    setPeriod((prevPeriod) =>
+      prevPeriod === Period.Monthly ? Period.Yearly : Period.Monthly
+    );
+  }
 
   return (
     <Card>
       <Title>Select your plan</Title>
-
       <Description className={cn.description}>
         You have the option of monthly or yearly billing.
       </Description>
@@ -37,13 +56,32 @@ export const SelectPlan = () => {
           {...methods.registerField(FieldName.Plan)}
           options={options}
         >
-          {({ value, label }) => (
-            <PlanLabel
-              title={label}
-              {...content[value as keyof typeof content]}
-            />
-          )}
+          {({ value, label }) => {
+            const { icon, price } = content[value as keyof typeof content];
+
+            return (
+              <PlanLabel
+                title={label}
+                icon={icon}
+                price={price[period]}
+                period={period}
+                additionalInfo={period === Period.Yearly ? "2 months free" : ""}
+              />
+            );
+          }}
         </RadioGroupField>
+      </div>
+
+      <div className={cn.period}>
+        <SwitchField
+          {...methods.registerField(FieldName.Period)}
+          checked={period === Period.Yearly}
+          offValue={Period.Monthly}
+          onValue={Period.Yearly}
+          offLabel="Monthly"
+          onLabel="Yearly"
+          onChange={handleChangePeriod}
+        />
       </div>
     </Card>
   );

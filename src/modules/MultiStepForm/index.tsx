@@ -4,7 +4,7 @@ import { FormProvider } from "../../contexts";
 import { ThankYou } from "../../steps";
 import { useSteps, useForm, useStoredData } from "../../hooks";
 import { stepsContent } from "../../constants";
-import { FieldName, ButtonType } from "../../types";
+import { FieldName, Period, ButtonType } from "../../types";
 import cn from "./MultiStepForm.module.sass";
 
 const steps = stepsContent.map(({ label }) => label);
@@ -14,6 +14,7 @@ type FormValues = {
   [FieldName.Email]: string;
   [FieldName.Phone]: string;
   [FieldName.Plan]: string;
+  [FieldName.Period]: Period;
   [FieldName.Addons]: string[];
 };
 
@@ -22,6 +23,7 @@ const initialValues = {
   [FieldName.Email]: "",
   [FieldName.Phone]: "",
   [FieldName.Plan]: "",
+  [FieldName.Period]: Period.Monthly,
   [FieldName.Addons]: [],
 };
 

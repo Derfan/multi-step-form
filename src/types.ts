@@ -8,6 +8,7 @@ export enum FieldName {
   Email = "email",
   Phone = "phone",
   Plan = "plan",
+  Period = "period",
   Addons = "addons",
 }
 

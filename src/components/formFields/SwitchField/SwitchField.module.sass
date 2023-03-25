@@ -1,0 +1,56 @@
+.root
+    display: flex
+    justify-content: center
+    align-items: center
+    gap: 24px
+
+.label
+    font-family: UbuntuMedium
+    font-size: 14px
+    line-height: 16px
+    color: #9699AA
+    transition: color .3s
+
+    &.off
+        color: #022959
+
+.switch
+    position: relative
+    display: inline-block
+    width: 38px
+    height: 20px
+
+.input
+    overflow: 0
+    width: 0
+    height: 0
+
+.slider
+    position: absolute
+    cursor: pointer
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background-color: #022959
+    border-radius: 10px
+
+    &:before
+        position: absolute
+        content: ""
+        height: 12px
+        width: 12px
+        left: 4px
+        bottom: 4px
+        background-color: #FFFFFF
+        border-radius: 50%
+        transition: transform .3s
+
+.checked
+    .slider:before
+        transform: translateX(18px)
+
+    .label.off
+        color: #9699AA
+    .label.on
+        color: #022959

@@ -8,6 +8,7 @@ interface PlanLabelProps {
   icon: FunctionComponent;
   price: number;
   period: Period;
+  additionalInfo?: string;
 }
 
 export const PlanLabel = ({
@@ -15,6 +16,7 @@ export const PlanLabel = ({
   icon: Icon,
   price,
   period,
+  additionalInfo = "",
 }: PlanLabelProps) => (
   <div className={cn.root}>
     <Icon />
@@ -24,6 +26,9 @@ export const PlanLabel = ({
       <span className={cn.price}>
         ${price}/{period}
       </span>
+      {additionalInfo ? (
+        <span className={cn.additionalInfo}>{additionalInfo}</span>
+      ) : null}
     </p>
   </div>
 );
