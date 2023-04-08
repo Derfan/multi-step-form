@@ -32,7 +32,6 @@ export const SwitchField = ({
         type="checkbox"
         name={name}
         className={cn.input}
-        checked={checked}
         value={checked ? onValue : offValue}
         onChange={onChange}
       />

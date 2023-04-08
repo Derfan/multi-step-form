@@ -7,18 +7,24 @@ import cn from "./PickAddons.module.sass";
 const content = {
   onlineService: {
     description: "Access to multiplayer games",
-    price: 1,
-    period: Period.Monthly,
+    price: {
+      [Period.Monthly]: 1,
+      [Period.Yearly]: 10,
+    },
   },
   largerStorage: {
     description: "Extra 1TB of cloud save",
-    price: 2,
-    period: Period.Monthly,
+    price: {
+      [Period.Monthly]: 2,
+      [Period.Yearly]: 20,
+    },
   },
   customizableProfile: {
     description: "Custom theme on your profile",
-    price: 2,
-    period: Period.Monthly,
+    price: {
+      [Period.Monthly]: 2,
+      [Period.Yearly]: 20,
+    },
   },
 };
 
@@ -29,7 +35,7 @@ const options = [
 ];
 
 export const PickAddons = () => {
-  const { methods } = useFormCtx();
+  const { methods, formValues } = useFormCtx();
 
   return (
     <Card>
@@ -44,12 +50,19 @@ export const PickAddons = () => {
           {...methods.registerField(FieldName.Addons)}
           options={options}
         >
-          {({ value, label }) => (
-            <AddonLabel
-              title={label}
-              {...content[value as keyof typeof content]}
-            />
-          )}
+          {({ value, label }) => {
+            const { price, description } =
+              content[value as keyof typeof content];
+
+            return (
+              <AddonLabel
+                title={label}
+                description={description}
+                period={formValues.period}
+                price={price[formValues.period]}
+              />
+            );
+          }}
         </CheckBoxGroupField>
       </div>
     </Card>
